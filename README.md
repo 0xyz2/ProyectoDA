@@ -90,7 +90,7 @@ GENAI_API_KEY=tu_api_key_aqui
 ### 6️⃣ Ejecutar el asistente
 
 ```bash
-python asistente_soporte.py
+python app.py
 ```
 
 ---
@@ -131,10 +131,7 @@ asistente-soporte-tecnico/
 ├── .env
 ├── README.md
 │
-└── evidencias/
-    ├── ejecucion_consola.png
-    ├── pregunta_asistente.png
-    └── respuesta_asistente.png
+
 ```
 
 ---
