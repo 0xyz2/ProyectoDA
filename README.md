@@ -121,7 +121,10 @@ Asistente:
 
 ## 📁 Estructura del proyecto
 
-proyectoDA/
+## 📁 Estructura del Proyecto
+
+```
+asistente-soporte-tecnico/
 │
 ├── app.py
 ├── requirements.txt
@@ -132,6 +135,7 @@ proyectoDA/
     ├── ejecucion_consola.png
     ├── pregunta_asistente.png
     └── respuesta_asistente.png
+```
 
 ---
 
