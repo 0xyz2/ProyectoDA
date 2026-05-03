@@ -1,8 +1,4 @@
-¡Perfecto! Aquí tienes el **README completo** con la sección del **Avance 2** bien explicada, integrada con tu README anterior.
 
----
-
-## 📄 **README.md completo (copia y pega todo esto):**
 
 ```markdown
 # 🤖 Asistente Experto de Soporte Técnico con RAG
