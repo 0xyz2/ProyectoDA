@@ -1,6 +1,6 @@
 
 
-```markdown
+
 # 🤖 Asistente Experto de Soporte Técnico con RAG
 
 ## 📌 Descripción del Proyecto
@@ -53,7 +53,7 @@ Este desarrollo corresponde al **Avance 1 y Avance 2 del proyecto académico: De
 
 ### Arquitectura RAG implementada:
 
-```
+
 ┌─────────────────────────────────────────────────────────────┐
 │                    FLUJO RAG DEL SISTEMA                      │
 ├─────────────────────────────────────────────────────────────┤
