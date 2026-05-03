@@ -49,33 +49,7 @@ Este desarrollo corresponde al **Avance 1 y Avance 2 del proyecto académico: De
 
 ---
 
-## ⚙️ Funcionamiento del Sistema
 
-### Arquitectura RAG implementada:
-
-
-┌─────────────────────────────────────────────────────────────┐
-│                    FLUJO RAG DEL SISTEMA                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  📁 PDFs Técnicos                                            │
-│       ↓                                                       │
-│  ✂️ División en fragmentos (chunk_size=1000)                 │
-│       ↓                                                       │
-│  🔢 Embeddings locales (all-MiniLM-L6-v2)                    │
-│       ↓                                                       │
-│  🗄️ Almacenamiento en ChromaDB (102 fragmentos)              │
-│       ↓                                                       │
-│  ❓ Pregunta del usuario                                      │
-│       ↓                                                       │
-│  🔍 Búsqueda por similitud (k=3 fragmentos)                  │
-│       ↓                                                       │
-│  📝 Prompt aumentado = Contexto + Pregunta                   │
-│       ↓                                                       │
-│  🤖 Gemini genera respuesta fundamentada                     │
-│                                                               │
-└─────────────────────────────────────────────────────────────┘
-```
 
 ### Estructura de cada respuesta:
 
