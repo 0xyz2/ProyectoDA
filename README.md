@@ -173,8 +173,9 @@ La interfaz permite:
 - **Respuestas en formato Markdown**
 
 ### Capturas de la GUI:
+<img width="1366" height="1292" alt="WhatsApp Image 2026-05-16 at 6 44 22 PM" src="https://github.com/user-attachments/assets/3875cfa1-53e3-4dfb-a89a-77dc7b19d688" />
 
-*(Insertar aquí capturas de pantalla de la interfaz)*
+
 
 ---
 
