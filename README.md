@@ -105,7 +105,7 @@ cd NOMBRE_DEL_PROYECTO
 
 ```bash
 python -m venv env
-```
+
 
 ### 3️⃣ Activar entorno virtual
 
