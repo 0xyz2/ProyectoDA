@@ -1,6 +1,3 @@
-¡Perfecto! Ya tengo tu README actual. Ahora voy a **agregar las secciones del Avance 4** (GUI y Evaluación Final).
-
----
 
 ## 📝 **README ACTUALIZADO (copia y pega esto completo):**
 
