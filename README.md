@@ -99,10 +99,12 @@ Usuario → GUI (Gradio) → Backend RAG → ChromaDB → Gemini → Respuesta
 ```bash
 git clone LINK_DEL_REPOSITORIO
 cd NOMBRE_DEL_PROYECTO
-2️⃣ Crear entorno virtual
+
+### 2️⃣ Crear entorno virtual
 bash
 python -m venv env
-3️⃣ Activar entorno virtual
+
+### 3️⃣ Activar entorno virtual
 Windows:
 
 bash
