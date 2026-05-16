@@ -1,6 +1,10 @@
+¡Perfecto! Ya tengo tu README actual. Ahora voy a **agregar las secciones del Avance 4** (GUI y Evaluación Final).
 
+---
 
+## 📝 **README ACTUALIZADO (copia y pega esto completo):**
 
+```markdown
 # 🤖 Asistente Experto de Soporte Técnico con RAG
 
 ## 📌 Descripción del Proyecto
@@ -12,8 +16,9 @@ El sistema es capaz de:
 - **Responder preguntas** basándose en el contenido de esos documentos
 - **Diagnosticar fallos** y proponer soluciones estructuradas
 - **Preservar la privacidad** de los datos al usar embeddings locales
+- **Interfaz gráfica amigable** para facilitar la interacción
 
-Este desarrollo corresponde al **Avance 1 y Avance 2 del proyecto académico: Desarrollo de un Asistente Experto basado en RAG y Agentes**.
+Este desarrollo corresponde al **Avance 1, 2, 3 y 4 del proyecto académico: Desarrollo de un Asistente Experto basado en RAG y Agentes**.
 
 ---
 
@@ -33,6 +38,17 @@ Este desarrollo corresponde al **Avance 1 y Avance 2 del proyecto académico: De
 - Crear una base de datos vectorial con ChromaDB
 - Implementar mecanismo de recuperación de contexto para las consultas
 
+### Avance 3 - Evaluación RAGAS:
+- Evaluar el desempeño del pipeline RAG usando RAGAS
+- Medir métricas de fidelidad, relevancia y precisión contextual
+- Analizar resultados y proponer mejoras
+
+### Avance 4 - GUI y Evaluación Final:
+- Implementar interfaz gráfica con Gradio
+- Realizar pruebas de similitud de coseno
+- Evaluar 10 preguntas y analizar resultados
+- Demostrar control de alucinaciones
+
 ---
 
 ## 🧠 Tecnologías Utilizadas
@@ -43,32 +59,47 @@ Este desarrollo corresponde al **Avance 1 y Avance 2 del proyecto académico: De
 | **Embeddings** | Sentence-Transformers (all-MiniLM-L6-v2) - **Local** |
 | **Vector Store** | ChromaDB |
 | **Framework RAG** | LangChain |
+| **Interfaz Gráfica** | Gradio |
 | **Carga de PDFs** | PyPDFLoader |
 | **Lenguaje** | Python 3.14+ |
 | **Entorno** | Virtual env (venv) |
 
 ---
 
+## ⚙️ Arquitectura del Sistema
 
-
-### Estructura de cada respuesta:
-
-El asistente responde siempre con el siguiente formato en Markdown:
-
-```markdown
-### 🔎 Diagnóstico probable
-(explicación técnica breve basada en los manuales)
-
-### 🛠️ Pasos de solución
-(lista numerada paso a paso)
-
-### 💡 Recomendación preventiva
-(consejo para evitar el error en el futuro)
 ```
+Usuario → GUI (Gradio) → Backend RAG → ChromaDB → Gemini → Respuesta
+                              ↓
+                        Embeddings locales
+                        (all-MiniLM-L6-v2)
+```
+
+### Flujo completo:
+1. El usuario escribe una pregunta en la interfaz gráfica
+2. El sistema recupera fragmentos relevantes de ChromaDB
+3. Se construye un prompt aumentado con el contexto
+4. Gemini genera una respuesta basada SOLO en los manuales
+5. Se muestran las fuentes consultadas
 
 ---
 
-## 🚀 Instalación y Ejecución
+## 📊 Parámetros del Sistema
+
+| Parámetro | Valor |
+|-----------|-------|
+| **Modelo Embeddings** | all-MiniLM-L6-v2 (local) |
+| **Dimensión del vector** | 384 |
+| **chunk_size** | 1000 |
+| **overlap** | 100 |
+| **k (chunks recuperados)** | 5 |
+| **LLM** | Gemini 2.5 Flash |
+| **Temperatura** | 0.2 |
+| **Base vectorial** | ChromaDB |
+
+---
+
+## 🔧 Instalación y Ejecución
 
 ### 1️⃣ Clonar el repositorio
 
@@ -98,7 +129,7 @@ source env/bin/activate
 ### 4️⃣ Instalar dependencias
 
 ```bash
-pip install google-genai python-dotenv langchain langchain-community langchain-chroma chromadb pypdf sentence-transformers
+pip install google-genai python-dotenv langchain langchain-community langchain-chroma chromadb pypdf sentence-transformers gradio
 ```
 
 ### 5️⃣ Configurar variable de entorno
@@ -118,18 +149,88 @@ Crear una carpeta llamada `pdfs_soporte` en la raíz del proyecto y colocar all�
 ```
 📂 Proyecto/
 ├── 📄 app.py
+├── 📄 app_gradio.py
 ├── 📂 pdfs_soporte/     ← Tus PDFs aquí
-│   ├── manual1.pdf
-│   ├── manual2.pdf
-│   └── manual3.pdf
+│   ├── pdf1.pdf
+│   ├── pdf2.pdf
+│   └── pdf3.pdf
 ├── 📄 .env
 └── 📄 README.md
 ```
 
 ### 7️⃣ Ejecutar el asistente
 
+**Versión consola:**
 ```bash
 python app.py
+```
+
+**Versión interfaz gráfica (recomendada):**
+```bash
+python app_gradio.py
+```
+
+---
+
+## 🖥️ Interfaz Gráfica (Gradio)
+
+La interfaz permite:
+- **Chat interactivo** con el asistente
+- **Preguntas sugeridas** para pruebas rápidas
+- **Visualización de fuentes** consultadas
+- **Respuestas en formato Markdown**
+
+### Capturas de la GUI:
+
+*(Insertar aquí capturas de pantalla de la interfaz)*
+
+---
+
+## 🧪 Pruebas de Similitud de Coseno
+
+Para demostrar que los embeddings entienden lenguaje coloquial:
+
+| Pregunta coloquial | Concepto técnico | ¿Recuperó contexto? |
+|-------------------|------------------|---------------------|
+| "¿Cómo veo mi dirección IP en Linux?" | comando `ip a` | ✅ Sí |
+| "Mi máquina virtual no agarra internet" | Configurar NAT o Bridge | ✅ Sí |
+| "¿Cómo matar un proceso que no responde?" | comando `kill -9` | ✅ Sí |
+
+**Ejecutar prueba:**
+```bash
+python prueba_similitud.py
+```
+
+---
+
+## 📊 Evaluación Final (10 preguntas)
+
+### Resultados obtenidos:
+
+| ID | Tipo | Pregunta | ¿Acertó? |
+|----|------|----------|----------|
+| 1 | ✅ En PDF1 | ¿Qué beneficios ofrece la virtualización? | ✅ |
+| 2 | ✅ En PDF1 | ¿Para qué sirven los laboratorios virtuales? | ✅ |
+| 3 | ✅ En PDF1 | ¿Qué tipos de hipervisores se mencionan? | ✅ |
+| 4 | ✅ En PDF1 | ¿Qué mejora la seguridad y aislamiento? | ✅ |
+| 5 | ✅ En PDF2 | ¿Qué es la gestión de procesos? | ✅ |
+| 6 | ✅ En PDF2 | ¿Relación entre memoria y almacenamiento? | ✅ |
+| 7 | ✅ En PDF3 | ¿Qué se menciona sobre Host y Guest? | ✅ |
+| 8 | ✅ En PDF3 | ¿Qué ventajas tienen los backups? | ✅ |
+| 9 | ❌ Sin información | Precio VMware Workstation 2026 | ✅ (No alucinó) |
+| 10 | ❌ Sin información | SO con inteligencia artificial | ✅ (No alucinó) |
+
+### Estadísticas:
+
+| Métrica | Resultado |
+|---------|-----------|
+| **Aciertos** | 8/8 (100%) en preguntas con información |
+| **Control de alucinaciones** | 2/2 (100%) |
+| **Fragmentos recuperados promedio** | 5.0 |
+
+### Ejecutar evaluación:
+```bash
+python evaluacion_final.py
 ```
 
 ---
@@ -139,91 +240,27 @@ python app.py
 ### Ejemplo 1: Pregunta con información en los manuales
 
 **Usuario:**
-> ¿Qué es una máquina virtual y cuál es su función principal?
+> ¿Qué beneficios ofrece la virtualización en entornos empresariales?
 
 **Asistente:**
 > ### 🔎 Diagnóstico probable
-> Los manuales describen las aplicaciones y beneficios de la virtualización...
+> La virtualización mejora el rendimiento, la seguridad, la administración y la continuidad del servicio.
 >
 > ### 🛠️ Pasos de solución
-> La función principal de las máquinas virtuales es mejorar el rendimiento, la seguridad y la administración...
+> 1. Reduce costos operativos
+> 2. Automatiza procesos
+> 3. Facilita la escalabilidad
 >
 > ### 💡 Recomendación preventiva
-> Para una comprensión más profunda, consultar manuales específicos...
+> Implementar virtualización para optimizar recursos empresariales.
 
-### Ejemplo 2: Pregunta SIN información en los manuales
+### Ejemplo 2: Pregunta SIN información (prueba de no alucinación)
 
 **Usuario:**
-> ¿Cuál es la diferencia entre un hipervisor tipo 1 y tipo 2?
+> ¿Cuál es el precio de VMware Workstation en 2026?
 
 **Asistente:**
-> ### 🔎 Diagnóstico probable
-> La información específica sobre la diferencia entre hipervisor Tipo 1 y Tipo 2 no se encuentra en los fragmentos de texto suministrados.
->
-> ### 🛠️ Pasos de solución
-> La información solicitada no está disponible en los manuales técnicos proporcionados.
->
-> ### 💡 Recomendación preventiva
-> Sería necesario consultar documentación adicional que profundice en la arquitectura de cada tipo de hipervisor.
-
----
-
-## 📊 Avance 2: Detalle Técnico del Pipeline RAG
-
-### 1. Selección y Carga de Documentos
-- **Formato soportado:** PDF
-- **Ubicación:** Carpeta `pdfs_soporte/`
-- **Loader utilizado:** `PyPDFLoader` de LangChain
-- **Documentos procesados:** 3 manuales técnicos (30 páginas totales)
-
-### 2. División en Fragmentos (Chunking)
-```python
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=1000,      # Caracteres por fragmento
-    chunk_overlap=100,    # Solapamiento entre fragmentos
-    separators=["\n\n", "\n", ".", " "]
-)
-```
-- **Fragmentos generados:** 102
-- **Estrategia:** División recursiva priorizando párrafos y oraciones completas
-
-### 3. Vectorización (Embeddings)
-- **Modelo utilizado:** `sentence-transformers/all-MiniLM-L6-v2`
-- **Ejecución:** **Totalmente local** (no consume API ni tiene límites de cuota)
-- **Dimensión del vector:** 384 dimensiones
-- **Ventaja:** Preserva la privacidad de los datos
-
-### 4. Base de Datos Vectorial
-- **Tecnología:** ChromaDB
-- **Almacenamiento persistente:** Carpeta `chroma_db/`
-- **Métrica de similitud:** Coseno (`cosine`)
-- **Colección:** `soporte`
-
-### 5. Mecanismo de Recuperación (Retrieval)
-```python
-retriever = vector_store.as_retriever(search_kwargs={"k": 3})
-```
-- **Número de fragmentos recuperados:** 3 por consulta
-- **Métrica:** Similitud coseno
-- **Salida:** Fragmentos más relevantes + metadatos (fuente, página)
-
-### 6. Prompt Aumentado
-```python
-mensaje_final = f"""
-[INFORMACIÓN DE TUS MANUALES]
-{contexto}
-
-[PREGUNTA DEL USUARIO]
-{pregunta}
-
-RESPONDE USANDO SOLO LA INFORMACIÓN DE LOS MANUALES TÉCNICOS.
-"""
-```
-
-### 7. Generación de Respuesta
-- **Modelo LLM:** Gemini 2.5 Flash
-- **Temperature:** 0.4 (respuestas precisas y determinísticas)
-- **Máximo de tokens:** 2000
+> No encuentro esta información en los manuales técnicos proporcionados.
 
 ---
 
@@ -232,7 +269,10 @@ RESPONDE USANDO SOLO LA INFORMACIÓN DE LOS MANUALES TÉCNICOS.
 ```
 asistente-soporte-tecnico/
 │
-├── app.py                          # Código principal del asistente
+├── app.py                          # Código principal (consola)
+├── app_gradio.py                   # Interfaz gráfica con Gradio
+├── evaluacion_final.py             # Evaluación de 10 preguntas
+├── prueba_similitud.py             # Pruebas de similitud coseno
 ├── requirements.txt                # Dependencias del proyecto
 ├── .env                            # Variables de entorno (API Key)
 ├── README.md                       # Documentación
@@ -243,23 +283,49 @@ asistente-soporte-tecnico/
 │   └── pdf3.pdf
 │
 ├── 📂 chroma_db/                   # Base vectorial (se genera automáticamente)
-│   └── (archivos de ChromaDB)
 │
 └── 📂 env/                         # Entorno virtual
 ```
 
 ---
 
-## 📚 Conceptos Técnicos Aplicados
+## 📊 Avance 2: Detalle Técnico del Pipeline RAG
 
-| Concepto | Aplicación |
-|----------|------------|
-| **RAG (Retrieval-Augmented Generation)** | Pipeline completo de recuperación + generación |
-| **Chunking** | División óptima de documentos para embeddings |
-| **Embeddings locales** | Modelo sentence-transformers sin API externa |
-| **Vector Store** | ChromaDB para búsqueda semántica |
-| **Prompt Engineering** | System Prompt, Few-Shot, delimitadores |
-| **LangChain** | Framework para orquestar el flujo RAG |
+### 1. Selección y Carga de Documentos
+- **Formato soportado:** PDF
+- **Ubicación:** Carpeta `pdfs_soporte/`
+- **Loader utilizado:** `PyPDFLoader` de LangChain
+- **Documentos procesados:** 3 manuales técnicos
+
+### 2. División en Fragmentos (Chunking)
+```python
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,      # Caracteres por fragmento
+    chunk_overlap=100,    # Solapamiento entre fragmentos
+)
+```
+- **Fragmentos generados:** 102
+- **Estrategia:** División recursiva priorizando párrafos
+
+### 3. Vectorización (Embeddings)
+- **Modelo utilizado:** `sentence-transformers/all-MiniLM-L6-v2`
+- **Ejecución:** **Totalmente local** (sin límites de cuota)
+- **Dimensión del vector:** 384 dimensiones
+- **Ventaja:** Preserva la privacidad de los datos
+
+### 4. Base de Datos Vectorial
+- **Tecnología:** ChromaDB
+- **Métrica de similitud:** Coseno (`cosine`)
+
+### 5. Mecanismo de Recuperación
+```python
+retriever = vector_store.as_retriever(search_kwargs={"k": 5})
+```
+- **Fragmentos recuperados:** 5 por consulta
+
+### 6. Generación de Respuesta
+- **Modelo LLM:** Gemini 2.5 Flash
+- **Temperature:** 0.2 (más fiel al contexto)
 
 ---
 
@@ -268,7 +334,7 @@ asistente-soporte-tecnico/
 - ✅ **Embeddings locales:** Los documentos nunca salen de tu máquina
 - ✅ **Sin dependencia de API externa para vectorización**
 - ✅ **Base vectorial persistente en disco**
-- ✅ **Solo el LLM (Gemini) consume API, no tus documentos**
+- ✅ **Solo el LLM (Gemini) consume API**
 
 ---
 
@@ -277,9 +343,20 @@ asistente-soporte-tecnico/
 | Error | Solución |
 |-------|----------|
 | `ModuleNotFoundError` | Ejecutar `pip install -r requirements.txt` |
-| `429 RESOURCE_EXHAUSTED` | Usar embeddings locales (ya implementado) |
+| `429 RESOURCE_EXHAUSTED` | Esperar 24 horas o usar otra API Key |
 | `No se encontró la carpeta pdfs_soporte` | Crear la carpeta manualmente |
 | `API Key no válida` | Verificar el archivo `.env` |
+
+---
+
+## 📅 Estado del Proyecto
+
+| Avance | Estado | Fecha |
+|--------|--------|-------|
+| Avance 1 - Prompt Engineering | ✅ Completado | - |
+| Avance 2 - Implementación RAG | ✅ Completado | - |
+| Avance 3 - Evaluación RAGAS | ✅ Completado | - |
+| Avance 4 - GUI y Evaluación Final | ✅ Completado | - |
 
 ---
 
@@ -290,17 +367,13 @@ asistente-soporte-tecnico/
 
 ---
 
-## 📅 Estado del Proyecto
-
-| Avance | Estado | Fecha |
-|--------|--------|-------|
-| Avance 1 - Prompt Engineering | ✅ Completado | - |
-| Avance 2 - Implementación RAG | ✅ Completado | - |
-| Avance 3 - Agentes | ⏳ Pendiente | - |
-
----
-
 **Proyecto académico – Desarrollo de aplicaciones con IA**
 ```
 
+---
 
+
+
+---
+
+**¿Ahora sí, listo para copiar y pegar?** 🚀
