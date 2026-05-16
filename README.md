@@ -1,7 +1,3 @@
-
-## 📝 **README ACTUALIZADO (copia y pega esto completo):**
-
-
 # 🤖 Asistente Experto de Soporte Técnico con RAG
 
 ## 📌 Descripción del Proyecto
