@@ -346,10 +346,10 @@ retriever = vector_store.as_retriever(search_kwargs={"k": 5})
 
 | Avance | Estado | Fecha |
 |--------|--------|-------|
-| Avance 1 - Prompt Engineering | ✅ Completado | - |
-| Avance 2 - Implementación RAG | ✅ Completado | - |
-| Avance 3 - Evaluación RAGAS | ✅ Completado | - |
-| Avance 4 - GUI y Evaluación Final | ✅ Completado | - |
+| Avance 1 - Prompt Engineering | ✅ Completado | 10/03 |
+| Avance 2 - Implementación RAG | ✅ Completado | 02/05 |
+| Avance 3 - Evaluación RAGAS | ✅ Completado | 09/05 |
+| Avance 4 - GUI y Evaluación Final | ✅ Completado | 16/05 |
 
 ---
 
