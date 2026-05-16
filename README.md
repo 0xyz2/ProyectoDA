@@ -1,7 +1,7 @@
 
 ## 📝 **README ACTUALIZADO (copia y pega esto completo):**
 
-```markdown
+
 # 🤖 Asistente Experto de Soporte Técnico con RAG
 
 ## 📌 Descripción del Proyecto
@@ -70,7 +70,7 @@ Usuario → GUI (Gradio) → Backend RAG → ChromaDB → Gemini → Respuesta
                               ↓
                         Embeddings locales
                         (all-MiniLM-L6-v2)
-```
+
 
 ### Flujo completo:
 1. El usuario escribe una pregunta en la interfaz gráfica
@@ -364,13 +364,4 @@ retriever = vector_store.as_retriever(search_kwargs={"k": 5})
 
 ---
 
-**Proyecto académico – Desarrollo de aplicaciones con IA**
-```
 
----
-
-
-
----
-
-**¿Ahora sí, listo para copiar y pegar?** 🚀
