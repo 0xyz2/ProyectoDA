@@ -61,7 +61,7 @@ Este desarrollo corresponde al **Avance 1, 2, 3 y 4 del proyecto académico: Des
 
 ## ⚙️ Arquitectura del Sistema
 
-```
+
 Usuario → GUI (Gradio) → Backend RAG → ChromaDB → Gemini → Respuesta
                               ↓
                         Embeddings locales
@@ -99,7 +99,7 @@ Usuario → GUI (Gradio) → Backend RAG → ChromaDB → Gemini → Respuesta
 ```bash
 git clone LINK_DEL_REPOSITORIO
 cd NOMBRE_DEL_PROYECTO
-```
+
 
 ### 2️⃣ Crear entorno virtual
 
